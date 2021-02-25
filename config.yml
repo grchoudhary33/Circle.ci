@@ -1,0 +1,15 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@1.0.0
+
+jobs:
+  build:
+    executor:
+      name: win/vs2019
+      shell: powershell.exe
+    environment:
+      FOO: "bar"    
+    steps:
+      - checkout
+      - run: powershell -File build.ps1

@@ -1,15 +1,10 @@
 version: 2.1
-
 orbs:
-  win: circleci/windows@1.0.0
-
-jobs:
-  build:
-    executor:
-      name: win/vs2019
-      shell: powershell.exe
-    environment:
-      FOO: "bar"    
-    steps:
-      - checkout
-      - run: powershell -File build.ps1
+    blazemeter: blazemeter-plugin/run-test@0.0.8
+workflows:
+    "Hello Workflow":
+        jobs:
+          - blazemeter/run-test:
+              apikey:  "b9107809a101b8b788e9964f"
+              apisecret: "24da75ad1302cfb986fe84846288e3c9aecb61742a269f0927db60b286aedbf4f9c28df6"
+              testurl:   "https://a.blazemeter.com/app/#/accounts/140171/workspaces/438644/projects/538695/tests/9092315/edit"
